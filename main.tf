@@ -1,15 +1,23 @@
+terraform {
+  required_providers {
+    acme = {
+      source = "vancluever/acme"
+      version = "~> 2.5"
+    }
+    null = {
+      source = "hashicorp/null"
+      version = "~> 3.1"
+    }
+    tls = {
+      source = "hashicorp/tls"
+      version = "~> 3.1"
+    }
+  }
+  required_version = ">= 0.13"
+}
+
 provider "acme" {
-  version = "~> 1.5"
-
   server_url = var.acme_server_url
-}
-
-provider "tls" {
-  version = "~> 2.1"
-}
-
-provider "null" {
-  version = "~> 2.1"
 }
 
 resource "tls_private_key" "acme_reg_private_key" {
